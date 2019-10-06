@@ -1,0 +1,50 @@
+<br>
+<div class="row">
+
+  <div class="col-12">
+    <div class="card  text-dark bg-light mb-3">
+      <h4 class="card-header text-center ">DANH MỤC MÔN HỌC</h4>
+      <div class="card-body ">
+        <table class="table table-borderless text-center ">
+          <tr>
+            <td *ngFor='let sub of Subjects| paginate: { itemsPerPage: perPage, currentPage: CurPage-1}' >
+              <a [routerLink]="['/TrangChu/DanhMucMonHoc',sub.Id]">
+                <div class="card text-center" style="width: 18rem;">
+                  <img src="./assets/images/logos/{{sub.Logo}}" class="card-img-top " alt="...">
+                  <div class="card-footer ">
+                    <h5 class="card-title text-dark">{{sub.Name}}</h5>
+                  </div>
+                </div>
+              </a>
+            </td>
+          </tr>
+          <tr>
+            <td *ngFor='let sub of Subjects| paginate: { itemsPerPage: perPage, currentPage: CurPage}'>
+                <a [routerLink]="['/TrangChu/DanhMucMonHoc',sub.Id]" class="">
+              <div class="card" style="width: 18rem;">
+                <img src="./assets/images/logos/{{sub.Logo}}" class="card-img-top" alt="...">
+                <div class="card-footer">
+                  <h5 class="card-title text-dark">{{sub.Name}}</h5>
+                </div>
+              </div>
+              </a>
+            </td>
+          </tr>
+        </table>
+
+      </div>
+      <div class="card-footer">
+        <div class="row">
+          <div class="col-2"></div>  
+          <div class="col-2"> <button type="button" class="btn btn-info  btn-block" (click)="goPre()"><i class="fas fa-arrow-left"></i> Previous</button></div>
+          <div class="col-4"></div> 
+          <div class="col-2"><button type="button" class="btn btn-info btn-block" (click)="goNext()"><i class="fas fa-arrow-right"></i> Next</button></div> 
+          <div class="col-2"></div> 
+        </div>
+        
+        
+      </div>
+    </div>
+
+  </div>
+</div>
