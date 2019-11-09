@@ -1,31 +1,62 @@
-
 <div class="container " id="maunen">
-        <div class="row">
-                
-            <div class="col-6" id="dangnhap">
-                    <br>
-                    <h1>Cập nhật tài khoản</h1>
-                    <hr>
-                  
-                 
-                <form action="/action_page.php">
-                    <div class="form-group">
-                        <label for="pwd">Mật khẩu hiện tại :</label>
-                        <input type="password" class="form-control" id="pwd" >
+    <div class="row">
+        <div class="col-3"> </div>
+        <div class="col-6" id="dangnhap">
+            <br>
+            <h1>Cập nhật tài khoản</h1>
+            <hr>
+
+
+            <form action="/action_page.php">
+                <div class="form-group">
+                    <label for="pwd">Họ và tên:</label>
+                    <input type="text" class="form-control" id="pwd" [(ngModel)]="user.fullname"
+                        [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="form-group">
+                    <label for="pwd">Ngày sinh:</label>
+                    <input type="date" class="form-control" id="pwd" [(ngModel)]="user.birthday"
+                        [ngModelOptions]="{standalone: true}">
+                </div>
+
+                <div class="form-group">
+                    <label for="pwd">Email:</label>
+                    <input type="text" class="form-control" id="pwd" [(ngModel)]="user.email"
+                        [ngModelOptions]="{standalone: true}">
+                </div>
+                <div class="form-group">
+                    <label class="form-check-lable" for="pwd">Giới tính:</label> &nbsp; &nbsp; &nbsp;
+                    <input type="radio" class="form-check-input" name="gender" value="true" [(ngModel)]="user.gender"
+                        [ngModelOptions]="{standalone: true}">Nam &nbsp; &nbsp; &nbsp;
+                    <input type="radio" class="form-check-input" name="gender" value="false" [(ngModel)]="user.gender"
+                        [ngModelOptions]="{standalone: true}">Nữ
+                </div>
+                              
+            </form>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                Thay đổi    
+              </button>
+              
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Cập nhập tài khoản</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
-                    <div class="form-group">
-                        <label for="pwd">Mật khẩu mới :</label>
-                        <input type="password" class="form-control" id="pwd" >
+                    <div class="modal-body">
+                      Bạn có chắc là muốn thay đổi thông tin này không?
                     </div>
-                        
-                    <div class="form-group">
-                            <label for="pwd">Xác nhận lại mật khẩu:</label>
-                            <input type="password" class="form-control" id="pwd">
-                        </div>
-                    
-                    <button type="submit" class="btn btn-primary"> <b> Thay đổi  </b>    </button>
-                </form>
-    
-            </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                      <button type="button" class="btn btn-primary" (click)="changes()" data-dismiss="modal">Save changes</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </div>
     </div>
+</div>

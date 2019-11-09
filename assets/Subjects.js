@@ -1,13 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router'
-import {HttpClient} from '@angular/common/http'
-@Component({
-  selector: 'app-danh-muc',
-  templateUrl: './danh-muc.component.html',
-  styleUrls: ['./danh-muc.component.css']
-})
-export class DanhMucComponent implements OnInit {
-  Subjects = [
+[
     {
         "Id": "ADAV",
         "Name": "Lập trình Android nâng cao",
@@ -108,43 +99,4 @@ export class DanhMucComponent implements OnInit {
         "Name": "Xây dựng trang web",
         "Logo": "WEBU.jpg"
     }
-];
-  perPage: number = 3;
-  numPage = null;
-  CurPage = 2;
-  numSub = 0;
-  constructor(private route: ActivatedRoute, private http: HttpClient) { }
-  danhmuc
-  ngOnInit() {
-    this.route.paramMap.subscribe(params => {
-      this.danhmuc = +params.get('DanhMucMonHoc');
-    });
-    
-    
-    if (this.Subjects.length % this.perPage == 0) {
-      this.numPage = this.Subjects.length / this.perPage;
-    }
-    else {
-      this.numPage = Math.floor(this.Subjects.length / this.perPage) + 1;
-    }
-  }
-  goNext() {  
-    if (this.CurPage < this.numPage) {
-      this.CurPage += 2;
-    }
-  }
-  goPre() {
-    if (this.CurPage>2)
-    {
-      this.CurPage-=2;
-    }
-  }
-  dangnhap(){
-    var user = JSON.parse(localStorage.getItem('login'))
-    if(user.username === "")
-    {
-      alert('Vui lòng đăng nhập tài khoản')
-      location.pathname = '/Dangnhap'
-    }
-  }
-}
+]

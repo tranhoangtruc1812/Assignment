@@ -1,6 +1,6 @@
 <div class="container " id="maunen">
-    <div class="row">
-
+    <div class="row" *ngIf="!show">
+        <div class="col-2"></div>
         <div class="col-6" id="dangnhap">
             <br>
             <img src="./assets/images/user.png">
@@ -10,22 +10,62 @@
             <form action="/action_page.php">
                 <div class="form-group">
                     <label for="email">Tên đăng nhập:</label>
-                    <input type="text" class="form-control" id="email">
+                    <input type="text" class="form-control" id="email" [(ngModel)]="logOn.userName"
+                        [ngModelOptions]="{standalone: true}">
                 </div>
                 <div class="form-group">
                     <label for="pwd">Mật khẩu:</label>
-                    <input type="password" class="form-control" id="pwd">
+                    <input type="password" class="form-control" id="pwd" [(ngModel)]="logOn.passWord"
+                        [ngModelOptions]="{standalone: true}">
+
                 </div>
                 <div class="form-group form-check">
                     <label class="form-check-label">
                         <input class="form-check-input" type="checkbox"> Ghi nhớ tài khoản
                     </label>
+                    <b *ngIf='show'>Đăng nhập thành công</b>
                 </div>
-                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+
+                <button type="submit" class="btn btn-primary" (click)="submit()">Đăng nhập</button>
             </form>
-
-
             <br>
         </div>
     </div>
+    <div class="row" *ngIf="show">
+        <img src="./assets/images/user.png" width="150px" style="margin: 20px 10px 1px 20px;">
+
+    </div>
+    <div class="row image" *ngIf="show">
+        <div class="col-2">
+        </div>
+        <div class="col-6">
+            <div class="avatar">
+                <h1 class="thongtin">Thông tin học sinh</h1>
+                <form>
+                    <div class="form-group form-inline">
+                        <label for="email">Họ và tên: </label> &nbsp;&nbsp; {{logOn.fullname}}
+                    </div>
+                    <div class="form-group form-inline">
+                        <label for="email">Giới tính: </label>&nbsp;&nbsp; {{logOn.gender}}
+                    </div>
+                    <div class="form-group form-inline">
+                        <label for="email">Ngày sinh: </label> &nbsp;&nbsp; {{logOn.birthday}}
+                    </div>
+                    <div class="form-group form-inline">
+                        <label for="email">Email:</label> &nbsp;&nbsp; {{logOn.email}}
+                    </div>
+                    <div class="form-group form-inline">
+                        <label for="email">Học phí:</label>&nbsp;&nbsp; {{logOn.schoolfee}}
+                    </div>
+                    <div class="form-group form-inline">
+                        <label for="email">Điểm:</label> &nbsp;&nbsp; {{logOn.marks}}
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <a [routerLink]="['/TrangChu/DanhMucMonHoc']"><button class="btn btn-danger">Làm bài thi</button> </a>
+    <a [routerLink]="['/CapNhatTaiKhoan']"><button class="btn btn-danger">Edit</button> </a>
+    <a [routerLink]="['/DoiMatKhau']"><button class="btn btn-danger">Đổi mật khẩu</button> </a>
+
 </div>

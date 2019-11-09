@@ -1,5 +1,6 @@
 <div class="container " id="maunen">
     <div class="row">
+        <div class="col-3"></div>
             
         <div class="col-6" id="dangnhap">
                 <br>
@@ -10,9 +11,9 @@
             <form action="/action_page.php">
                 <div class="form-group">
                         <label for="email">Nhập địa chỉ Email của bạn:</label>
-                        <input type="email" class="form-control" id="email" placeholder="Nhập email của bạn...">
+                        <input type="email" class="form-control" id="email" placeholder="Nhập email của bạn..." [(ngModel)]="email" [ngModelOptions]="{standalone: true}">
                     </div>
-                    <button type="submit" class="btn btn-primary"> <b> Gửi mã xác thực </b>    </button>
+                    <button type="submit" class="btn btn-primary" (click)="check()"> <b> Gửi mã xác thực </b>    </button>
                 <div class="form-group">
                     <label for="email">Nhập mã xác thực:</label>
                     <input type="text" class="form-control" id="email" >
@@ -27,8 +28,9 @@
                     </div>
                 
                 <button type="submit" class="btn btn-primary"> <b> hoàn tác  </b>    </button>
+               
             </form>
-
+            <br>
         </div>
     </div>
 </div>

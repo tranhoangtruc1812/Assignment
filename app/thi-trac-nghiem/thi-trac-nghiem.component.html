@@ -1,35 +1,75 @@
 <br>
-<div class="card bg-secondary text-white">
+<div class="card bg-secondary text-white ">
     <div class="card header  text-center bg-secondary">
-        <h1>Môn học</h1>
+        <h1>{{ten}}</h1>
+        <span>Thời gian làm bài:</span>
+        <span class="bg-black text-center txtshadow text-white px-2 p-1" id="timer"></span>
     </div>
-    <div class="card-body">
-        <h4>Câu hỏi:</h4>
-            <div class="jumbotron text-dark">
-                <h1 class="display-4">đề bài ............</h1>
-                <hr class="my-4">
-                <div class="form-check">
-                    <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="optradio">Option 1
-                    </label>
-                  </div>
-                  <div class="form-check">
-                    <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="optradio">Option 2
-                    </label>
-                  </div>
-                  <div class="form-check disabled">
-                    <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="optradio" >Option 3
-                    </label>
-                  </div>
-                  <div class="form-check disabled">
-                    <label class="form-check-label">
-                      <input type="radio" class="form-check-input" name="optradio" >Option 3
-                    </label>
-                  </div>
-                  <br>
-                  <button class="btn btn-primary">Nộp bài</button>
+    <div class="card-body   " *ngFor='let quiz of Quizs| paginate: { itemsPerPage: 1, currentPage: curPage}'>
+        <h4 *ngIf="show">Câu hỏi:</h4>
+        <div class="jumbotron text-dark" *ngIf="show">
+            <h1 class="display-6 cauhoi"> {{quiz.Text}}</h1>
+            <hr class="my-4">
+            <div class="form-check" *ngFor='let q of Quiz'>
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="{{quiz.Id}}" value="{{q.Id}}"
+                        [(ngModel)]="myAnswers[curPage-1]" [ngModelOptions]="{standalone: true}"> {{q.Text}}
+                </label>
             </div>
+            <br>
+            <div class="row">
+                <div class="col-5"> </div>
+                <div class="col-6">
+                    <button class="btn btn-primary" (click)="point()" (click)="endTime()" *ngIf="finish">finish</button>
+                </div>
+            </div>
+        </div>
+
+        <h4 *ngIf="!show">kết quả:</h4>
+        <div class="jumbotron text-dark" *ngIf="!show">
+            <h1 class="ketqua" id="timer-2">Result: {{marks}}/{{numberQuiz}} </h1>
+           <span id="result"> <span id="timer-2"> </span></span>
+        </div>
+
+        <div class="row">
+            <div class="col-4">
+                {{curPage}}/{{numberQuiz}}
+            </div>
+            <div class="col-6">
+                <button class="btn btn-primary " (click)="goFirst()">First</button>
+                <button class="btn btn-primary " (click)="goPre()"><i class="fas fa-arrow-left"></i></button>
+                <button class="btn btn-primary" (click)="goNext()"><i class="fas fa-arrow-right"></i></button>
+                <button class="btn btn-primary " (click)="goLast()">Last</button>
+            </div>
+        </div>
     </div>
 </div>
+
+ <div class="row"  >
+     <div class="col-2">
+            
+     </div>
+     <div class="col-10">
+          
+                <div id="result" class="col-md-9 mt-5" style="display: none;">
+                        <h1>Bảng thống kê điểm thi</h1>
+                    <table class="table table-striped bgr table-responsive-sm text-primary table-bordered text-center">
+                        <thead class="table-success h5">
+                            <tr>
+                                <th scope="col">Môn Thi</th>
+                                <th scope="col">Điểm Thi</th>
+                                <th scope="col">Thời Gian Làm Bài</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="text-black h5">
+                                <td class="align-middle">{{ten}}</td>
+    
+                                <td class="align-middle">{{marks}}</td>
+                                <td id="timer-2" class="align-middle"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            </div>

@@ -4,3 +4,10 @@
 #dangnhap{
     padding: 5%;
 }
+.avatar{
+    display: inline;
+}
+.thongtin{
+    display: inline;
+    background: darksalmon;
+}

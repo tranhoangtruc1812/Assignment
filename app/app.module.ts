@@ -16,22 +16,19 @@ import { CapNhatTKComponent } from './cap-nhat-tk/cap-nhat-tk.component';
 import { DoiMatKhauComponent } from './doi-mat-khau/doi-mat-khau.component';
 import { DanhMucComponent } from './danh-muc/danh-muc.component';
 import {NgxPaginationModule} from 'ngx-pagination'
+import {HttpClientModule} from '@angular/common/http';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    TrangChuComponent,    
-    LienHeComponent,    
-    GioiThieuComponent,   
-    HoiDapComponent,   
-    GopYComponent,  
-    DangNhapComponent,  
-    DangKiComponent, ThiTracNghiemComponent, QuenMatKhauComponent, CapNhatTKComponent, DoiMatKhauComponent, DanhMucComponent
+    TrangChuComponent,LienHeComponent, GioiThieuComponent,HoiDapComponent,GopYComponent, DangNhapComponent, DangKiComponent, ThiTracNghiemComponent, QuenMatKhauComponent, CapNhatTKComponent, DoiMatKhauComponent, DanhMucComponent, 
   ],
   imports: [
     BrowserModule,
     FormsModule,
     NgxPaginationModule,
+    HttpClientModule,
     RouterModule.forRoot([
       {path:'', component:TrangChuComponent},
       {path:'TrangChu',component:TrangChuComponent},

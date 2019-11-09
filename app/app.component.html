@@ -1,8 +1,8 @@
 <div class="container">
   <header class="header">
     <img src="./assets/images/banner_1.jpg" width="100%" height="300px">
-    
-    
+
+
   </header>
   <nav class="navbar navbar-expand-lg navbar-dark bg-secondary ">
     <a class="navbar-brand" [routerLink]="['TrangChu']"><i class="fas fa-home"></i> </a>
@@ -23,24 +23,37 @@
         <li class="nav-item border-right">
           <a class="nav-link" [routerLink]="['GopY']"> <i class="		fas fa-envelope-open"></i> Góp ý </a>
         </li>
-        <li class="nav-item ">
-          <a class="nav-link" [routerLink]="['HoiDap']"><i class="		fas fa-question-circle"></i> Hỏi đáp </a>
+        <li class="nav-item border-right ">
+          <a class="nav-link " [routerLink]="['HoiDap']"><i class="		fas fa-question-circle"></i> Hỏi đáp </a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Môn Học
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <a class="dropdown-item" [routerLink]="['TrangChu/DanhMucMonHoc',a.Id]" *ngFor='let a of subject' (click)="dangnhap()">{{a.Name}}</a>
+              
+            </div>
+          </a>
+          
         </li>
         <!--  -->
       </ul>
       <div class="col 4"></div>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item dropdown ">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            Tài khoản
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">
+            Tài Khoản
           </a>
+
+          {{selectedStu.username}}
+
           <div class="dropdown-menu " aria-labelledby="navbarDropdown">
             <a class="dropdown-item" [routerLink]="['Dangki']">Đăng kí</a>
-            <a class="dropdown-item" [routerLink]="['Dangnhap']">Đăng Nhập</a>
+            <a class="dropdown-item" [routerLink]="['Dangnhap']" >Đăng nhập</a>
+            
             <a class="dropdown-item" [routerLink]="['QuenMatKhau']">Quên mật khẩu</a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" [routerLink]="['TrangChu']">Đăng xuất</a>
+            <a class="dropdown-item" [routerLink]="['Dangnhap']" (click)="logOut()">Đăng xuất</a>
             <a class="dropdown-item" [routerLink]="['DoiMatKhau']">Đổi mật khẩu</a>
             <a class="dropdown-item" [routerLink]="['CapNhatTaiKhoan']">Cập nhật tài khoản</a>
           </div>
@@ -56,5 +69,4 @@
 
   </footer>
 </div>
-
 <!--end container-->
