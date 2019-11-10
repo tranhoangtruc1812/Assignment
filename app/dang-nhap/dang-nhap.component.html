@@ -46,7 +46,15 @@
                         <label for="email">Họ và tên: </label> &nbsp;&nbsp; {{logOn.fullname}}
                     </div>
                     <div class="form-group form-inline">
-                        <label for="email">Giới tính: </label>&nbsp;&nbsp; {{logOn.gender}}
+                        <div class="form-group">
+                            <label class="form-check-lable" for="pwd">Giới tính:</label> &nbsp; &nbsp; &nbsp;
+                            <input type="radio" class="form-check-input" name="gender" value="true"
+                                [(ngModel)]="logOn.gender" [ngModelOptions]="{standalone: true}">Nam &nbsp; &nbsp;
+                            &nbsp;
+                            <input type="radio" class="form-check-input" name="gender" value="false"
+                                [(ngModel)]="logOn.gender" [ngModelOptions]="{standalone: true}">Nữ
+                        </div>
+
                     </div>
                     <div class="form-group form-inline">
                         <label for="email">Ngày sinh: </label> &nbsp;&nbsp; {{logOn.birthday}}
@@ -64,8 +72,8 @@
             </div>
         </div>
     </div>
-    <a [routerLink]="['/TrangChu/DanhMucMonHoc']"><button class="btn btn-danger">Làm bài thi</button> </a>
-    <a [routerLink]="['/CapNhatTaiKhoan']"><button class="btn btn-danger">Edit</button> </a>
-    <a [routerLink]="['/DoiMatKhau']"><button class="btn btn-danger">Đổi mật khẩu</button> </a>
+    <a [routerLink]="['/TrangChu/DanhMucMonHoc']"><button class="btn nut" *ngIf="show">Làm bài thi</button> </a>
+    <a [routerLink]="['/CapNhatTaiKhoan']"><button class="btn nut" *ngIf="show">Cập nhật tài khoản</button> </a>
+    <a [routerLink]="['/DoiMatKhau']"><button class="btn nut " *ngIf="show">Đổi mật khẩu</button> </a>
 
 </div>

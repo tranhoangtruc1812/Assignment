@@ -11,8 +11,8 @@ export class DangNhapComponent implements OnInit {
   url = './assets/Students.js'
   show: boolean = false
   constructor(private http: HttpClient, private service: StudentsServiceService) { }
-  students=[];
-  
+  students = [];
+
   logOn = {
     userName: '',
     passWord: '',
@@ -24,8 +24,8 @@ export class DangNhapComponent implements OnInit {
     marks: ""
   }
   ngOnInit() {
-    this.students =JSON.parse( localStorage.getItem('user'))
-    
+    this.students = JSON.parse(localStorage.getItem('user'))
+
   }
   getStudents() {
     return this.http.get(this.url)
@@ -33,7 +33,7 @@ export class DangNhapComponent implements OnInit {
   submit() {
     //  console.log(this.students)
     this.students.forEach(element => {
-      if (this.logOn.userName== element.username)
+      if (this.logOn.userName == element.username) {
         if (this.logOn.passWord == element.password) {
           this.logOn = {
             userName: element.username,
@@ -46,11 +46,14 @@ export class DangNhapComponent implements OnInit {
             marks: element.marks
           }
           this.show = true;
-          localStorage.setItem('login',JSON.stringify(this.logOn))
+          localStorage.setItem('login', JSON.stringify(this.logOn))
         }
+        else  return alert("Tài khoản hoặc mật khẩu không đúng!")
+      }
+     
 
     });
-  
+
   }
 
 }

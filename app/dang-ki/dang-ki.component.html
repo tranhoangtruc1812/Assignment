@@ -1,8 +1,8 @@
-<div  id="maunen">
+<div id="maunen">
     <br>
     <div class="row">
         <div class="col-3"></div>
-        <div class="col-8" >
+        <div class="col-8">
             <h1>Đăng ký tài khoản</h1>
             <br>
             <table>
@@ -14,39 +14,48 @@
                 <br>
                 <tr>
                     <td>Họ và tên: </td>
-                    <td> <input type="text" class="form-control"  placeholder="Nhập họ và tên"
+                    <td> <input type="text" class="form-control" placeholder="Nhập họ và tên"
                             [(ngModel)]="user.fullname" [ngModelOptions]="{standalone: true}" style="width:400px"></td>
                 </tr>
                 <br>
                 <tr>
                     <td>Ngày sinh: </td>
-                    <td> <input type="date" class="form-control"  placeholder="Nhập ngày sinh"
+                    <td> <input type="date" class="form-control" placeholder="Nhập ngày sinh"
                             [(ngModel)]="user.birthday" [ngModelOptions]="{standalone: true}"></td>
                 </tr>
                 <br>
                 <tr>
                     <td>Giới tính: </td>
-                    <td> <input type="text" class="form-control" placeholder="Nhập giới tính"
-                            [(ngModel)]="user.gender" [ngModelOptions]="{standalone: true}"></td>
+                    <td>
+                        <div class="form-group">
+                            &nbsp;&nbsp;&nbsp;
+                            <input type="radio" class="form-check-input" name="gender" value="true"
+                                [(ngModel)]="user.gender" [ngModelOptions]="{standalone: true}">Nam &nbsp; &nbsp;
+                            &nbsp;
+                            <input type="radio" class="form-check-input" name="gender" value="false"
+                                [(ngModel)]="logOn.gender" [ngModelOptions]="{standalone: true}">Nữ
+                        </div>
+                    </td>
                 </tr>
                 <br>
                 <tr>
                     <td>Tên đăng nhập:</td>
-                    <td colspan="2"><input type="text" class="form-control"  placeholder="Nhập tên đăng nhập"
+                    <td colspan="2"><input type="text" class="form-control" placeholder="Nhập tên đăng nhập"
                             [(ngModel)]="user.username" [ngModelOptions]="{standalone: true}"></td>
                 </tr>
-                
+
                 <br>
                 <tr>
                     <td>Mật khẩu:</td>
                     <td colspan="2"><input type="password" class="form-control" placeholder="Nhập mật khẩu"
-                        [(ngModel)]="password" [ngModelOptions]="{standalone: true}"  ></td>
+                            [(ngModel)]="password" [ngModelOptions]="{standalone: true}"></td>
                 </tr>
                 <br>
                 <tr>
                     <td>Nhập lại mật khẩu:</td>
-                    <td colspan="2"><input type="password" class="form-control" id="email" placeholder="Nhập lại mật khẩu"
-                            [(ngModel)]="user.password" [ngModelOptions]="{standalone: true}"></td>
+                    <td colspan="2"><input type="password" class="form-control" id="email"
+                            placeholder="Nhập lại mật khẩu" [(ngModel)]="user.password"
+                            [ngModelOptions]="{standalone: true}"></td>
                 </tr>
             </table>
 
@@ -92,7 +101,7 @@
             </div>
             <button type="submit" class="btn btn-primary" (click)="check()"> <b> Đăng ký </b> </button>
         </div>
-        
+
     </div>
     <br>
 </div>
